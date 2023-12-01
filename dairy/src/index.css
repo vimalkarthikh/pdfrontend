@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
+
+
+
+.app-heading{
+  font-family: 'Tangerine', cursive;
+  font-size: 4.2rem;
+  font-weight: bolder;
+  text-shadow: 0 0 5px rgb(255, 255, 0), 0 0 15px rgb(255, 171, 3); 
+  color:whitesmoke
+}
+.nav-heading{
+  font-family: 'Tangerine', cursive;
+  font-size: 2rem;
+  font-weight: bolder;
+  text-shadow: 0 0 5px rgb(255, 238, 0), 0 0 15px rgb(255, 238, 0); 
+  color: white;
+}
+.navbar-toggler{
+  background-color: rgb(175, 175, 175)  ;
+}
+.cc{
+  margin: 1px;
+}
+.nav-links{
+  font-family: 'Montserrat', sans-serif;
+  color: aliceblue;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+}
+.nav-links:hover{
+  color: violet;
+  text-shadow: 0 0 10px rgb(121, 64, 255), 0 0 15px rgb(161, 78, 255);
+}
+
+.text-space{
+  height: 2cm;
+}
+
+.cont-home{
+  background-color: black;
+  padding: 5px;
+  border-radius: 1cm;
+}
+
+.logout-links{
+  font-family: 'Montserrat', sans-serif;
+  color: red;
+  align-items: center;
+  text-decoration: none;
+  font-size: 1.3rem;
+
+}
+
+.logout-links:hover{
+  color: crimson;
+  text-shadow: 0 0 10px red, 0 0 15px red;  
+}
+
+.home-abts{
+  font-family: 'Montserrat', sans-serif;
+  margin-left: 0px;
+}
+.lab-text{
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+
+}
+
+.bg{
+  margin: 3px;
+}
+
+.home-abt{
+  font-family: 'Montserrat', sans-serif;
+  text-decoration: none;
+  color: White;
+  align-items: center;
+  
+}
+
+.t-area{
+  font-family: 'Montserrat', sans-serif;
+  height: 5cm;
+
+}
+
+.home-card{
+  margin: 10px;
+  background-color:rgba(245, 245, 245, 0.781);
+  border-radius: 1cm;
+}
+
+.hcd{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+body {
+  
+  background-image: url('../public/img/4.png');
+  background-position: right;
+
+}
+.danger-btn{
+  color: rgb(197, 0, 0);
+}
+
+.navbg{
+  background-color: black;
+}
+.r-bt{
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+.table-hover:hover{
+  color: bisque;
+  background-color: blue;
+}
+
+.view-btn{
+  font-family:  'Montserrat', sans-serif;
+  font-weight: bolder;
+  margin: 5px;
+}
+
+.home-btn{
+  font-family:  'Montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: 1.1rem;
+  border-radius: 1cm;
+}
+.reg-input{
+  font-family: 'Poiret One', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+.fp-btn{
+  font-family: 'Poiret One', sans-serif;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.errormessage{
+  color: red;
+  font-family: 'Poiret One', sans-serif;
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+.log-btn{
+  margin: 10px;
+  
+  font-family:  'Montserrat', sans-serif;
+  font-weight: bolder;
+  font-size: 1.1rem;
+
+}
+
+.home-row{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

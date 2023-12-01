@@ -1,0 +1,82 @@
+import React, { useState } from 'react';
+import { Link,  useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import Navbar from './navbar'
+
+
+function Create() {
+    const navigate = useNavigate();
+    
+    
+      const [data, setData] = useState({
+        title: "",date:"",
+        document: ""
+      });
+    
+      const token = localStorage.getItem("token");
+      //console.log(token);
+    
+      const config = {
+        headers: {
+          'x-auth-token': `${token}`,
+        }
+      };
+    
+      const handleChange = ({ currentTarget: input }) => {
+        setData({ ...data, [input.name]: input.value });
+      };
+    
+      const handleDocumentSave = async (e) => {
+        e.preventDefault(); // Prevent the default form submission behavior
+    
+        try {
+          let saveDoc = await axios.post('https://dairymanage.onrender.com/dairy/add', data, config);
+          toast('Document Saved!');
+
+          navigate('/view') // Access the response data
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    
+    
+  return (
+    <div>
+        <Navbar></Navbar>
+        <br />
+    <div className="container">
+        <div className="row">
+            <div className="col card home-card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
+                <h1 className='text-center home-abt text-black'>Write Diary</h1>
+                <form>
+  <div className="mb-3">
+
+    <input type="text" className="form-control text-black home-abt" name='title' value={data.title} onChange={handleChange} placeholder='Highlights of the Day'/>
+    </div>
+  <div className="mb-3">
+    </div>
+  <div className="mb-3">
+    <textarea type="text" className="form-control t-area" name='document' value={data.document} onChange={handleChange} placeholder='What Happened Today'/>
+    </div>
+    <div className="row">
+        <div className="col-sm-4 col"> <input type="date" className="form-control home-abts bg" name='date' value={data.date} onChange={handleChange} placeholder='Date'/>
+   </div>
+        <div className="col-sm-4 col">
+    <Link className="btn btn-success bg form-control" onClick={handleDocumentSave}>Save</Link></div>
+    <div className="col-sm-4 col">
+        
+    <Link className="btn btn-danger bg form-control" to='/view'>Cancel</Link>
+    
+    </div>
+    </div>
+ 
+</form>
+            </div>
+        </div>
+    </div>
+    </div>
+  )
+}
+
+export default Create
