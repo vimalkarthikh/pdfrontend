@@ -12,6 +12,7 @@ const validationSchema = Yup.object().shape({
   password: Yup.string().required('ⓘ Password is required'),
 });
 function Register() {
+    const [loading,setLoading]=useState(false)
     const navigate = useNavigate();
 
   async function handleSubmit(values) {
@@ -47,6 +48,7 @@ function Register() {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={async (values, actions) => {
+                setLoading(true);
                 try {
                     await axios.post('https://dairymanage.onrender.com/register', values);
                     toast.success('Registration Successful');
@@ -110,7 +112,11 @@ function Register() {
                 <div className='row'>
                   <br />
                   <button className='btn btn-success col log-btn' type="submit" disabled={formikProps.isSubmitting}>
-                    Register
+                  {loading ? (
+                        <span className="spinner-border text-light mx-2"></span>
+                      ) : (
+                        "Register"
+                      )}
                   </button>
                   <Link className='btn btn-danger col log-btn' to='/'>
                     Back

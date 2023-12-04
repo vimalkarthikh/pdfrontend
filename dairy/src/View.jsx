@@ -29,7 +29,6 @@ function View() {
       .delete(`https://dairymanage.onrender.com/dairy/delete/${id}`, config)
       .then((r) => {
         toast('Diary Page Deleted');
-        alert('Data Will be deleted');
         window.location.reload();
       })
       .catch((error) => {

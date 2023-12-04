@@ -7,6 +7,7 @@ import Navbar from './navbar';
 function Edit() {
 
     const { id } = useParams();
+    const[loading,setLoading]=useState(false);
     const navigate =useNavigate();
   
     const [data, setData] = useState({
@@ -41,6 +42,7 @@ function Edit() {
   
     const handleDocumentUpdate = async (e) => {
       e.preventDefault();
+      setLoading(true);
   
       try {
         const saveDoc = await axios.put(`https://dairymanage.onrender.com/dairy/edit/${id}`, data, config);
@@ -75,7 +77,13 @@ function Edit() {
     <div className="col-sm-4 col"> <input type="date" className="form-control home-abts bg" name='date' value={data.date} onChange={handleChange} placeholder='Date'/>
 </div>
     <div className="col-sm-4 col">
-<Link className="btn btn-success bg form-control" onClick={handleDocumentUpdate}>Update</Link></div>
+<Link className="btn btn-success bg form-control" onClick={handleDocumentUpdate}>
+{loading ? (
+                        <span className="spinner-border text-light mx-2"></span>
+                      ) : (
+                        "Update"
+                      )}
+    </Link></div>
 <div className="col-sm-4 col">
     
 <Link className="btn btn-danger bg form-control" to='/view'>Cancel</Link>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
@@ -9,6 +9,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().required('ⓘ Email is required')
 });
 function Forgot() {
+    const[loading,setLoading]=useState(false)
     const initialvalues = {
         email: '',
       };
@@ -28,6 +29,7 @@ function Forgot() {
             validationSchema={validationSchema}
             onSubmit={(values, actions) => {
               console.log(values);
+              setLoading(true)
               try {
                 let data =  axios.post('', values);
                 if (data) {
@@ -55,7 +57,11 @@ function Forgot() {
                 <div className='row'>
                   <br />
                   <button className='btn btn-success col log-btn' type="submit" disabled={formikProps.isSubmitting}>
-                    Reset Password
+                  {loading ? (
+                        <span className="spinner-border text-light mx-2"></span>
+                      ) : (
+                        "Reset Password"
+                      )}
                   </button>
                   <Link className='btn btn-danger col log-btn' to='/login'>
                     Back

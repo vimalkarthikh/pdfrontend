@@ -6,6 +6,7 @@ import Navbar from './navbar'
 
 
 function Create() {
+    const[loading,setLoading]=useState(false);
     const navigate = useNavigate();
     
     
@@ -29,6 +30,7 @@ function Create() {
     
       const handleDocumentSave = async (e) => {
         e.preventDefault(); // Prevent the default form submission behavior
+        setLoading(true);
     
         try {
           let saveDoc = await axios.post('https://dairymanage.onrender.com/dairy/add', data, config);
@@ -63,7 +65,13 @@ function Create() {
         <div className="col-sm-4 col"> <input type="date" className="form-control home-abts bg" name='date' value={data.date} onChange={handleChange} placeholder='Date'/>
    </div>
         <div className="col-sm-4 col">
-    <Link className="btn btn-success bg form-control" onClick={handleDocumentSave}>Save</Link></div>
+    <Link className="btn btn-success bg form-control" onClick={handleDocumentSave}>
+    {loading ? (
+                        <span className="spinner-border text-light mx-2"></span>
+                      ) : (
+                        "Save"
+                      )}
+        </Link></div>
     <div className="col-sm-4 col">
         
     <Link className="btn btn-danger bg form-control" to='/view'>Cancel</Link>

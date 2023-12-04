@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,6 +11,7 @@ const validationSchema = Yup.object().shape({
  });
 
 function Reset() {
+    const[loading,setLoading]=useState(false)
     const navigate = useNavigate();
     const initialvalues ={
         password:''
@@ -30,6 +31,7 @@ function Reset() {
         validationSchema={validationSchema}
         onSubmit={(values, actions)=>{
             console.log(values);
+            setLoading(true);
             try {
               let data =  axios.post('', values);
               console.log(data);
@@ -59,7 +61,11 @@ function Reset() {
               <div className='row'>
                 <br/>
               <button className='btn btn-info col log-btn ' type="submit" disabled={formikProps.isSubmitting}>
-               Submit Password
+              {loading ? (
+                        <span className="spinner-border text-light mx-2"></span>
+                      ) : (
+                        "Submit Password"
+                      )}
               </button></div>
       
             </Form>
